@@ -1,6 +1,34 @@
 import math
 import random
 
+def check_poker_test(n): # Problem był w tym, że losowosc mogła nie dać liczbę z której test pokerowy byłby poprawny, ale dodałem dodatkową funkcję, żeby po prostu sprawdzić że ten test będzie poprawny
+    x0 = (n * n) % Blum  # Generowanie losowego ciągu znaków
+    code = ""
+    code += input_code(x0)
+    for i in range(1, 20000):
+        xi = (x0 * x0) % Blum
+        code += input_code(xi)
+        x0 = xi
+
+    test = 0
+    matrix = [0, 0, 0, 0,
+               0, 0, 0, 0,
+               0, 0, 0, 0,
+               0, 0, 0, 0]
+    index = 0
+    while index < len(code):
+        num = int(code[index]) * 8 + int(code[index + 1]) * 4 + int(code[index + 2]) * 2 + int(code[index + 3]) * 1
+        matrix[num] += 1
+        index += 4
+    for i in range(16):
+        test += matrix[i] * matrix[i]
+    test *= 16 / 5000
+    test -= 5000
+    if test > 2.16 and test < 46.17:
+        return True
+    else:
+        return False
+
 def prime(a) : #Sprawdzanie liczby pierwszej
     b = False
     i = 2
@@ -34,8 +62,8 @@ def are_coprime(a, b): #Funkcja sprawdzająca, czy liczby są względnie pierwsz
 
 def generate_coprime(n): # Generowanie liczby losowej, która jest względnie pierwsza z podaną liczbą
     while True:
-        random_number = random.randint(2, n*5)  # Generowanie liczb. Zakres od 2 do 5*N_Blum
-        if are_coprime(n, random_number):
+        random_number = random.randint(2, 5*n)  # Generowanie liczb. Zakres od 2 do 5*N_Blum
+        if are_coprime(n, random_number) and check_poker_test(random_number) == True:
             return random_number
 
 
@@ -56,6 +84,7 @@ if __name__ == '__main__':
     Blum = a*b
     print("Liczba Bluma: ", Blum)
     random_coprime = generate_coprime(Blum)
+
     print("Wybrana losowa liczba: ", random_coprime)
 
     x0 = (random_coprime*random_coprime)%Blum # Generowanie losowego ciągu znaków
