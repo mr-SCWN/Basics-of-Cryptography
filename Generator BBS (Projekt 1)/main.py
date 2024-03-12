@@ -174,4 +174,4 @@ if __name__ == '__main__':
     test4-=5000
     print("W ciągu mamy liczbę wystąpień segmentów o wartości dziesiętnej:")
     print(" [  0,   1,   2,   3,   4,   5,   6,   7,   8,   9,  10,  11,  12,  13,  14,  15]\n", matrix4)
-    print("W ciągu mamy 'X = 16/5000*SUM(matrix[i])-5000' (powinno być 2,16 < X < 46,17) - ", test4)
+    print("W ciągu mamy 'X = 16/5000*SUM(matrix[i]^2)-5000' (powinno być 2,16 < X < 46,17) - ", test4)
