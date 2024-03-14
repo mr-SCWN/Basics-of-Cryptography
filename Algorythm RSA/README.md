@@ -6,6 +6,6 @@ Algorytm RSA (nazwa pochodzi od nazwisk jego twórców: Ron Rivest, Adi Shamir i
 Rozwiązanie zostało zaimplementowane w języku Python (plik `main.py`), przy użyciu bibliotek `math` i `random`. Dodany jest test sprawdzenia wiadomości przed szyfrowaniem i po deszyfrowaniu.
 
 ### Informacja o implementacji
-[Więcej informacji o implementacji]()
+[Więcej informacji o implementacji](https://github.com/mr-SCWN/Podstawy-Kryptografii/blob/main/Algorythm%20RSA/Implementacja%20RSA.pdf)
 ### Przykładowe rozwiązanie 
-![Przykładowe rozwiązanie]()
+![Przykładowe rozwiązanie](https://github.com/mr-SCWN/Podstawy-Kryptografii/assets/101336193/0995ddec-aa0a-4477-a041-8b8f11284ad5)
