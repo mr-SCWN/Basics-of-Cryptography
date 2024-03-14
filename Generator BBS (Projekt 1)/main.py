@@ -1,6 +1,83 @@
 import math
 import random
 
+def check_monobit_test(n):
+    x0 = (n * n) % Blum  # Generowanie losowego ciągu znaków
+    code = ""
+    code += input_code(x0)
+    for i in range(1, 20000):
+        xi = (x0 * x0) % Blum
+        code += input_code(xi)
+        x0 = xi
+    test = 0
+
+    for i in range(len(code)):  # Sprawdzenie ile mamy 1 w ciągu
+        if code[i] == '1':
+            test += 1
+    if test > 9725 and test<10275:
+        return True
+    else:
+        return False
+
+
+def check_runs_test(n ):
+    x0 = (n * n) % Blum  # Generowanie losowego ciągu znaków
+    code = ""
+    code += input_code(x0)
+    for i in range(1, 20000):
+        xi = (x0 * x0) % Blum
+        code += input_code(xi)
+        x0 = xi
+    test = [0,0,0,0,0,0]
+    code_test2 = code+'0' # Dodanie dodatkowej zmiennej żeby lżej było sprawdzić ostatni symbol
+    counter = 0
+    for i in range(len(code_test2)): #Sprawdzenie ile mamy serii w ciągu
+        if code_test2[i] == '1':
+            counter+=1
+        else:
+            if counter == 1:
+                test[0] += 1
+            elif counter == 2:
+                test[1] +=1
+            elif counter == 3:
+                test[2]+= 1
+            elif counter == 4:
+                test[3] +=1
+            elif counter == 5:
+                test[4]+=1
+            elif counter >= 6:
+                test[5]+=1
+            counter = 0
+    if test[0]>2315 and test[0]<2685 and test[1]>1114 and test[1]<1386 and test[2]>527 and test[2]<723 and test[3]>240 and test[3]<384 and test[4]>103 and test[4]<209 and test[5]>103 and test[5]<209:
+        return True
+    else:
+        return False
+
+
+def check_long_run_test(n):
+    x0 = (n * n) % Blum  # Generowanie losowego ciągu znaków
+    code = ""
+    code += input_code(x0)
+    for i in range(1, 20000):
+        xi = (x0 * x0) % Blum
+        code += input_code(xi)
+        x0 = xi
+    test =0
+    current= 1
+    code_test3 = code + 'x' # Dodanie dodatkowej zmiennej żeby lżej było sprawdzić ostatni symbol
+    for i in range(len(code)):
+        if code_test3[i] == code_test3[i+1]:
+            current+=1
+        else:
+            if current >= 26:
+                test+=1
+            current=1
+
+    if test == 0:
+        return True
+    else:
+        return False
+
 def check_poker_test(n): # Problem był w tym, że losowosc mogła nie dać liczbę z której test pokerowy byłby poprawny, ale dodałem dodatkową funkcję, żeby po prostu sprawdzić że ten test będzie poprawny
     x0 = (n * n) % Blum  # Generowanie losowego ciągu znaków
     code = ""
@@ -62,8 +139,8 @@ def are_coprime(a, b): #Funkcja sprawdzająca, czy liczby są względnie pierwsz
 
 def generate_coprime(n): # Generowanie liczby losowej, która jest względnie pierwsza z podaną liczbą
     while True:
-        random_number = random.randint(2, 5*n)  # Generowanie liczb. Zakres od 2 do 5*N_Blum
-        if are_coprime(n, random_number) and check_poker_test(random_number) == True:
+        random_number = random.randint(2, 2*n)  # Generowanie liczb. Zakres od 2 do 5*N_Blum
+        if are_coprime(n, random_number) and check_poker_test(random_number) == True and check_monobit_test(random_number) == True and check_runs_test(random_number)==True and check_long_run_test(random_number) == True:
             return random_number
 
 
