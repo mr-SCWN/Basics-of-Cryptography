@@ -47,6 +47,7 @@ def generate_private(phi , e):
 
 
 if __name__ == '__main__':
+    print("Wpisz liczbe p i q:", end=" ")
     p, q = input().split()  # Wprowadzanie danych przez użytkownika
     p = nearest_prime(p)
     q = nearest_prime(q)
@@ -59,20 +60,31 @@ if __name__ == '__main__':
     print("Klucz prywatny: d = ", d, "     n = ", n)
 
     print("\n\n         Szyfrowanie wiadomosci:")
-    print("Wpisz wiadomosc: m (m < n) = ", end="") # m - message (wiadomosc)
-    m = int(input())
-    c = pow (m , e ,n) #pow(base, exp, mod)
+    print("Wpisz wiadomosc: m (mogą być liczby, litery, znaki specjalne) = ", end="") # m - message (wiadomosc)
+    m = input()
+    c=""
+    c_matrix = []
+    m_new=""
+    for i in range(len(m)):
+        x = pow(ord(m[i]), e, n)  # pow(base, exp, mod)
+        c_matrix.append(x)
+        c+=str(x)
+
     print("Szyfrowana wiadomosc: c = " , c)
 
 
     print("\n\n         Deszyfrowanie wiadomosci:")
     print("Szyfrowana wiadomosc: c = ", c) # c - encrypted message (wiadomość zaszyfrowana)
-    m_new = pow (c, d, n)
+
+    for i in range(len(c_matrix)):
+        x = pow (c_matrix[i], d, n)
+        m_new+=chr(x)
+
     print("Deszyfrowana wiadomosc: m_new = ", m_new)
 
     print("\nJeżeli m == m_new, to oznacza że szyfrowanie i deszyfrowanie były poprawne zrobione:")
-    print("m = ", m, ", m_new = ", m_new, " - ", end="")
+    print("m = ", m, "\nm_new = ", m_new,  end="\n\n")
     if m_new == m:
-        print("Prawda")
+        print("Odp: Prawda")
     else:
-        print("Falsz")
+        print("Odp: Falsz")
