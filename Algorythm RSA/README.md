@@ -8,4 +8,4 @@ Rozwiązanie zostało zaimplementowane w języku Python (plik `main.py`), przy u
 ### Informacja o implementacji
 [Więcej informacji o implementacji](https://github.com/mr-SCWN/Podstawy-Kryptografii/blob/main/Algorythm%20RSA/Implementacja%20RSA.pdf)
 ### Przykładowe rozwiązanie 
-![Przykładowe rozwiązanie](https://github.com/mr-SCWN/Podstawy-Kryptografii/assets/101336193/0995ddec-aa0a-4477-a041-8b8f11284ad5)
+![Przykladowe rozwiazanie](https://github.com/mr-SCWN/Podstawy-Kryptografii/assets/101336193/738807c0-c4b3-4905-8490-b5cdebfe65d3)
