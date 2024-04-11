@@ -153,6 +153,8 @@ def input_code(x):
 if __name__ == '__main__':
     file_name = "losowy_ciag_znakow.txt"
 
+    print("Wpisz wartości a i b: ", end="")
+
     a, b = input().split() # Wprowadzanie danych przez użytkownika
     a = nearest_prime(a)
     b = nearest_prime(b)
