@@ -4,14 +4,14 @@ import random
 import matplotlib.pyplot as plt
 
 
-def embed_watermark(image_path, n, d):
+def embed_watermark(image_path,key, n, d):
     # Wczytanie obrazu
     image = Image.open(image_path)
     original_pixels = np.array(image)
     modified_pixels = np.array(image)
 
     # Inicjalizacja generatora liczb pseudolosowych
-   # random.seed(key)
+    random.seed(key)
 
     # Wybór n par punktów
     for _ in range(n):
@@ -34,7 +34,7 @@ def embed_watermark(image_path, n, d):
     axes[1].imshow(modified_pixels, cmap='gray')
     axes[1].set_title('Obraz wyjściowy (ze znakiem wodnym)')
     axes[1].axis('off')
-    
+
     plt.subplots_adjust(wspace=0.05, hspace=0.05)
     plt.show()
 
@@ -45,7 +45,7 @@ def embed_watermark(image_path, n, d):
 image_path = "obraz.png"
 n = 1000                            # Wybieramy ilosc par punktow
 d = 200                             # Zmiana jasnosci
-#k = int(input("Wpisz klucz: "))
+key = int(input("Wpisz klucz: "))
 
 
-embed_watermark(image_path, n , d)
+embed_watermark(image_path, key,  n , d)
