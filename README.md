@@ -4,7 +4,6 @@
 * Projekt 1: Generatory ciągów losowych + Testy losowości Plik
 * Projekt 2: Algorytm RSA
 * Projekt 3: Algorytm DH
-* Projekt 4: Algorytm DH
 * Projekt 4: Funkcje skrótu
 * Projekt 5: Szyfry blokowe
 * Projekt 6: Kryptografia wizualna
